@@ -13,7 +13,7 @@ int MallocAlignedMemory(void *& memory, size_t memory_size) {
     // malloc success
     return 0;
   }
-#elif defined (__linux__)
+#elif (defined (__linux__) || defined(__APPLE__))
   int ret = posix_memalign(&memory, kMemAlignStep, memory_size);
   if (ret == 0) {
     return ret;
@@ -28,7 +28,7 @@ void FreeAlignedMemory(void *& memory) {
   if (memory) {
 #if defined(_WIN32)
     _aligned_free(memory);
-#elif defined (__linux__)
+#elif (defined (__linux__) || defined(__APPLE__))
     free(memory);
 #else
     ERROR_INFO("FreeAlignedMemory not implemented yet!");

@@ -84,12 +84,13 @@ int main(int argc, char *argv[]) {
   ShowImageSC("RGB G Channel", img_bgr_g);
   ShowImageSC("RGB B Channel", img_bgr_b);
 
-  ofstream bgrtxt_f(fn + "_bgr.txt");
-  string rgbtxtfn(fn + "_rgb.txt");
+  string output_prefix("output");
+  ofstream bgrtxt_f(output_prefix + "_bgr.txt");
+  string rgbtxtfn(output_prefix + "_rgb.txt");
   ofstream rgbtxt_f(rgbtxtfn);
-  ofstream rtxt_f(fn + "_r.txt");
-  ofstream gtxt_f(fn + "_g.txt");
-  ofstream btxt_f(fn + "_b.txt");
+  ofstream rtxt_f(output_prefix + "_r.txt");
+  ofstream gtxt_f(output_prefix + "_g.txt");
+  ofstream btxt_f(output_prefix + "_b.txt");
 
   dumpData(bgrtxt_f, image_bgr.data, img_bgr_h * img_bgr_w * 3, " ", 3);
   dumpData(rgbtxt_f, image_rgb.data, img_bgr_h * img_bgr_w * 3, " ", 3);
